@@ -69,5 +69,14 @@ namespace Factory.Controllers
       ViewData["Machines"] = _db.Machines.ToList();
       return PartialView("_ManageLicensesPartial", model);
     }
+
+    [HttpPost]
+    public ActionResult Delete(int EngineerId)
+    {
+      Engineer engineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == EngineerId);
+      _db.Engineers.Remove(engineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index", "Home");
+    }
   }
 }

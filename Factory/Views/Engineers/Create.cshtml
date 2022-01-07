@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer;
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.FirstName, "First Name:")
+  @Html.TextBoxFor(model => model.FirstName)
+  @Html.LabelFor(model => model.FirstName, "Last Name:")
+  @Html.TextBoxFor(model => model.LastName)
+  <button class="btn btn-dark">Add engineer record</button>
+}

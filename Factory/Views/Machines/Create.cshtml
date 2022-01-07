@@ -1,0 +1,12 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine;
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.MachineName, "Machine Name:")
+  @Html.TextBoxFor(model => model.MachineName)
+  <button class="btn btn-dark">Add machine record</button>
+}

@@ -5,6 +5,7 @@
 </div>
 <div class="initially-hidden bordered" id="editor-div">
   <form action="/Engineers/Edit/" method="post">
+    @Html.HiddenFor(model => model.EngineerId)
     @Html.LabelFor(model => model.FirstName, "First Name:")
     @Html.EditorFor(model => model.FirstName)
     @Html.LabelFor(model => model.FirstName, "Last Name:")

@@ -2,7 +2,7 @@
 
 @model Factory.Models.Engineer
 
-<h5>@Model.FullName's Licenses:</h5>
+<h5>@Model.FullName's repair licenses:</h5>
 <ul id="license-list">
   @foreach (Machine machine in ViewData["Machines"] as List<Machine>)
   {
@@ -27,4 +27,4 @@
   }
 </ul>
 
-<script src="~/js/ManageLicenses.js"></script>
+<script src="~/js/licenses.js"></script>

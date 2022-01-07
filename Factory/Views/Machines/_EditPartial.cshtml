@@ -1,26 +1,14 @@
 @model Factory.Models.Machine
 
 <div id="edit-button-div" class="bordered">
-<button id="edit-button" class="btn btn-dark" type="button">Edit machine</button>
+<button id="edit-button" class="btn btn-dark btn-sm" type="button">Edit machine</button>
 </div>
 <div class="initially-hidden bordered" id="editor-div">
   <form action="/Machines/Edit/" method="post">
     @Html.HiddenFor(model => model.MachineId)
     @Html.LabelFor(model => model.MachineName, "Machine Name:")
     @Html.EditorFor(model => model.MachineName)
-    <button class="btn btn-dark">Save changes</button>
-    <button id="cancel-edit-button" class="btn btn-dark" type="button">Discard changes</button>
+    <button class="btn btn-dark btn-sm">Save changes</button>
+    <button id="cancel-edit-button" class="btn btn-dark btn-sm" type="button">Discard changes</button>
   </form>
 </div>
-
-<script>
-  $("#edit-button").on("click", () => {
-    $("#edit-button-div").slideUp(50, () => {$("#editor-div").slideDown(100)})
-    ;
-  });
-
-  $("#cancel-edit-button").on("click", () => {
-    $("#editor-div").slideUp(50, () => {$("#edit-button-div").slideDown(100)})
-    ;
-  });
-</script>

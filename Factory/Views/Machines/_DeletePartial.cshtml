@@ -1,0 +1,13 @@
+@model Factory.Models.Machine
+
+<div id="delete-button-div" class="bordered">
+<button id="delete-button" class="btn btn-dark btn-sm" type="button">Delete machine record</button>
+</div>
+<div class="initially-hidden bordered" id="delete-confirm-div">
+  <h5>Are you sure you want to delete the record for @Model.MachineName?</h5>
+  <form action="/Engineers/Delete/" method="post">
+    @Html.HiddenFor(model => model.MachineId)
+    <button class="btn btn-dark btn-sm">Confirm deletion</button>
+    <button id="cancel-delete-button" class="btn btn-dark btn-sm" type="button">Cancel</button>
+  </form>
+</div>

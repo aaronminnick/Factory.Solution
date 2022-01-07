@@ -1,7 +1,7 @@
 @model Factory.Models.Engineer
 
 <div id="edit-button-div" class="bordered">
-<button id="edit-button" class="btn btn-dark" type="button">Edit engineer</button>
+<button id="edit-button" class="btn btn-dark btn-sm" type="button">Edit engineer</button>
 </div>
 <div class="initially-hidden bordered" id="editor-div">
   <form action="/Engineers/Edit/" method="post">
@@ -10,19 +10,7 @@
     @Html.EditorFor(model => model.FirstName)
     @Html.LabelFor(model => model.FirstName, "Last Name:")
     @Html.EditorFor(model => model.LastName)
-    <button class="btn btn-dark">Save changes</button>
-    <button id="cancel-edit-button" class="btn btn-dark" type="button">Discard changes</button>
+    <button class="btn btn-dark btn-sm">Save changes</button>
+    <button id="cancel-edit-button" class="btn btn-dark btn-sm" type="button">Discard changes</button>
   </form>
 </div>
-
-<script>
-  $("#edit-button").on("click", () => {
-    $("#edit-button-div").slideUp(50, () => {$("#editor-div").slideDown(100)})
-    ;
-  });
-
-  $("#cancel-edit-button").on("click", () => {
-    $("#editor-div").slideUp(50, () => {$("#edit-button-div").slideDown(100)})
-    ;
-  });
-</script>

@@ -14,6 +14,12 @@
   @await Html.PartialAsync("_ManageLicensesPartial", Model, ViewData)
 </div>
 
+<div id="delete-div">
+  @await Html.PartialAsync("_DeletePartial", Model)
+</div>
+
 <form action="/" method="get">
   <button class="btn btn-dark">Return to database management homepage</button>
 </form>
+
+<script src="~/js/details.js"></script>

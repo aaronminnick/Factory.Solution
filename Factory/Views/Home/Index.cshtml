@@ -15,7 +15,7 @@
       <ul>
       @foreach (Engineer engineer in ViewBag.Engineers)
       {
-        <li>@engineer.FullName</li>
+        <li>@Html.ActionLink(@engineer.FullName, "Details", "Engineers", new {id = engineer.EngineerId})</li>
       }
       </ul>
     }

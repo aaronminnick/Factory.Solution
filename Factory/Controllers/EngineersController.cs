@@ -26,5 +26,11 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index", "Home");
     }
+
+    public ActionResult Details(int id)
+    {
+      Engineer model = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      return View(model);
+    }
   }
 }

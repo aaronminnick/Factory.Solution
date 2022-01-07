@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h3>@Model.FullName</h3>
+
+<div id="edit-div">
+  @await Html.PartialAsync("_EditPartial", Model)
+</div>
+
+<div id="licenses-div">
+  @await Html.PartialAsync("_ManageLicensesPartial", Model)
+</div>
+
+<form action="/" method="get">
+  <button class="btn btn-dark">Return to database management homepage</button>
+</form>

@@ -12,9 +12,9 @@
         <li class="license-check">
           @machine.MachineName 
           <button class="btn btn-dark btn-sm remove-license-button">Remove License</button>
+          <input class="engineer-id" type="hidden" value=@Model.EngineerId />
+          <input class="machine-id" type="hidden" value=@machine.MachineId />
         </li>
-          <input type="hidden" name="EngineerId" value="@Model.EngineerId" />
-          <input type="hidden" name="MachineId" value="@machine.MachineId" />
       </form>
     }
     else
@@ -23,9 +23,9 @@
         <li>
           @machine.MachineName 
           <button class="btn btn-dark btn-sm add-license-button">Add License</button>
+          <input class="engineer-id" type="hidden" value=@Model.EngineerId />
+          <input class="machine-id" type="hidden" value=@machine.MachineId />
         </li>
-          <input type="hidden" name="EngineerId" value="@Model.EngineerId" />
-          <input type="hidden" name="MachineId" value="@machine.MachineId" />
       </form>
     }
   }
@@ -34,18 +34,15 @@
 <script>
   $(".remove-license-button").on("click", function(event) {
     event.preventDefault();
-    let engineerId = $(this).closest("input[name='EngineerId']").val();
-    let machineId = $(this).closest("input[name='MachineId']").val();
-
+    let engineerId = $(this).siblings(".engineer-id").val();
+    let machineId = $(this).siblings(".machine-id").val();
     $("#licenses-div").load("/Engineers/RemoveLicense", {EngineerId: engineerId, MachineId: machineId})
   });
 
   $(".add-license-button").on("click", function(event) {
     event.preventDefault();
-    let engineerId = $(this).closest("input[name='EngineerId']").val();
-    let machineId = $(this).closest("input[name='MachineId']").val();
-    alert(engineerId)
-
+    let engineerId = $(this).siblings(".engineer-id").val();
+    let machineId = $(this).siblings(".machine-id").val();
     $("#licenses-div").load("/Engineers/AddLicense", {EngineerId: engineerId, MachineId: machineId})
   });
 </script>

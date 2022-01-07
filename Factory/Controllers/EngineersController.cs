@@ -48,7 +48,7 @@ namespace Factory.Controllers
     [HttpPost("Engineers/AddLicense")]
     public PartialViewResult AddLicense(int EngineerId, int MachineId)
     {
-      Console.WriteLine(MachineId);
+      Console.WriteLine("Eng: {0} Mach: {1}", EngineerId, MachineId);
       Engineer model = _db.Engineers
         .Include(engineer => engineer.Licenses)
         .FirstOrDefault(engineer => engineer.EngineerId == EngineerId);

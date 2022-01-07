@@ -1,0 +1,42 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Factory.Models;
+
+<div class="row">
+  <div class="col-6">
+    <h3>Engineers</h3>
+    @if (ViewBag.Engineers.Count > 0)
+    {
+      <ul>
+      @foreach (Engineer engineer in ViewBag.Engineers)
+      {
+        <li>@engineer.FullName</li>
+      }
+      </ul>
+    }
+    else
+    {
+      <p>No engineers in database. Please use the link to add an engineer.</p>
+    }
+    @Html.ActionLink("Add an engineer", "Create", "Engineers")
+  </div>
+  <div class ="col-6">
+    <h3>Machines</h3>
+    @if (ViewBag.Machines.Count > 0)
+    {
+      <ul>
+      @foreach (Machine machine in ViewBag.Machines)
+      {
+        <li>@machine.MachineName</li>
+      }
+      </ul>
+    }
+    else
+    {
+      <p>No machines in database. Please use the link to add an machine.</p>
+    }
+    @Html.ActionLink("Add a machine", "Create", "Machines")
+  </div>
+</div>

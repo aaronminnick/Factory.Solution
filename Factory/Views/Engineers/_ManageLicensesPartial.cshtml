@@ -8,25 +8,21 @@
   {
     if (Model.Licenses.Where(license => license.MachineId == machine.MachineId).Count() > 0)
     {
-      <form action="/Engineers/RemoveLicense" method="post">
         <li class="license-check">
           @machine.MachineName 
           <button class="btn btn-dark btn-sm remove-license-button">Remove License</button>
           <input class="engineer-id" type="hidden" value=@Model.EngineerId />
           <input class="machine-id" type="hidden" value=@machine.MachineId />
         </li>
-      </form>
     }
     else
     {
-      <form action="/Engineers/AddLicense" method="post">
         <li>
           @machine.MachineName 
           <button class="btn btn-dark btn-sm add-license-button">Add License</button>
           <input class="engineer-id" type="hidden" value=@Model.EngineerId />
           <input class="machine-id" type="hidden" value=@machine.MachineId />
         </li>
-      </form>
     }
   }
 </ul>

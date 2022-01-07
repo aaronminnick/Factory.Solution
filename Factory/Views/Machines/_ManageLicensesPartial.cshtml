@@ -1,0 +1,44 @@
+@using Factory.Models;
+
+@model Factory.Models.Machine
+
+<h5>Engineers licensed to repair @Model.MachineName:</h5>
+<ul id="license-list">
+  @foreach (Engineer engineer in ViewData["Engineers"] as List<Engineer>)
+  {
+    if (Model.Licenses.Where(license => license.EngineerId == engineer.EngineerId).Count() > 0)
+    {
+        <li class="license-check">
+          @engineer.FullName
+          <button class="btn btn-dark btn-sm remove-license-button">Remove License</button>
+          <input class="engineer-id" type="hidden" value=@engineer.EngineerId />
+          <input class="machine-id" type="hidden" value=@Model.MachineId />
+        </li>
+    }
+    else
+    {
+        <li>
+          @engineer.FullName
+          <button class="btn btn-dark btn-sm add-license-button">Add License</button>
+          <input class="engineer-id" type="hidden" value=@engineer.EngineerId />
+          <input class="machine-id" type="hidden" value=@Model.MachineId />
+        </li>
+    }
+  }
+</ul>
+
+<script>
+  $(".remove-license-button").on("click", function(event) {
+    event.preventDefault();
+    let engineerId = $(this).siblings(".engineer-id").val();
+    let machineId = $(this).siblings(".machine-id").val();
+    $("#licenses-div").load("/Machines/RemoveLicense", {EngineerId: engineerId, MachineId: machineId})
+  });
+
+  $(".add-license-button").on("click", function(event) {
+    event.preventDefault();
+    let engineerId = $(this).siblings(".engineer-id").val();
+    let machineId = $(this).siblings(".machine-id").val();
+    $("#licenses-div").load("/Machines/AddLicense", {EngineerId: engineerId, MachineId: machineId})
+  });
+</script>

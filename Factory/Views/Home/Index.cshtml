@@ -32,7 +32,7 @@
       <ul>
       @foreach (Machine machine in ViewBag.Machines)
       {
-        <li>@machine.MachineName</li>
+        <li>@Html.ActionLink(@machine.MachineName, "Details", "Machines", new {id = machine.MachineId})</li>
       }
       </ul>
     }

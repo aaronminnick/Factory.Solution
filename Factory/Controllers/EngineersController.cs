@@ -48,7 +48,21 @@ namespace Factory.Controllers
     [HttpPost("Engineers/AddLicense")]
     public PartialViewResult AddLicense(int EngineerId, int MachineId)
     {
-      Console.WriteLine("Eng: {0} Mach: {1}", EngineerId, MachineId);
+      _db.Licenses.Add(new EngineerMachine() {EngineerId = EngineerId, MachineId = MachineId});
+      _db.SaveChanges();
+      Engineer model = _db.Engineers
+        .Include(engineer => engineer.Licenses)
+        .FirstOrDefault(engineer => engineer.EngineerId == EngineerId);
+      ViewData["Machines"] = _db.Machines.ToList();
+      return PartialView("_ManageLicensesPartial", model);
+    }
+
+    [HttpPost("Engineers/RemoveLicense")]
+    public PartialViewResult RemoveLicense(int EngineerId, int MachineId)
+    {
+      EngineerMachine license = _db.Licenses.FirstOrDefault(license => license.EngineerId == EngineerId && license.MachineId == MachineId);
+      _db.Licenses.Remove(license);
+      _db.SaveChanges();
       Engineer model = _db.Engineers
         .Include(engineer => engineer.Licenses)
         .FirstOrDefault(engineer => engineer.EngineerId == EngineerId);

@@ -2,6 +2,7 @@ using Factory.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System;
 
 namespace Factory.Controllers
 {
@@ -32,5 +33,14 @@ namespace Factory.Controllers
       Engineer model = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
       return View(model);
     }
+
+    [HttpPost]
+    public ActionResult Edit(Engineer engineer)
+    {
+      _db.Entry(engineer).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details", new {id = engineer.EngineerId});
+    }
+
   }
 }

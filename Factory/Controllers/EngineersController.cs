@@ -45,5 +45,15 @@ namespace Factory.Controllers
       return RedirectToAction("Details", new {id = engineer.EngineerId});
     }
 
+    [HttpPost("Engineers/AddLicense")]
+    public PartialViewResult AddLicense(int EngineerId, int MachineId)
+    {
+      Console.WriteLine(MachineId);
+      Engineer model = _db.Engineers
+        .Include(engineer => engineer.Licenses)
+        .FirstOrDefault(engineer => engineer.EngineerId == EngineerId);
+      ViewData["Machines"] = _db.Machines.ToList();
+      return PartialView("_ManageLicensesPartial", model);
+    }
   }
 }

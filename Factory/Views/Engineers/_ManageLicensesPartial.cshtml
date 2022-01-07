@@ -8,15 +8,44 @@
   {
     if (Model.Licenses.Where(license => license.MachineId == machine.MachineId).Count() > 0)
     {
-      <li class="license-check">@machine.MachineName</li>
+      <form action="/Engineers/RemoveLicense" method="post">
+        <li class="license-check">
+          @machine.MachineName 
+          <button class="btn btn-dark btn-sm remove-license-button">Remove License</button>
+        </li>
+          <input type="hidden" name="EngineerId" value="@Model.EngineerId" />
+          <input type="hidden" name="MachineId" value="@machine.MachineId" />
+      </form>
     }
     else
     {
-      <li>@machine.MachineName</li>
+      <form action="/Engineers/AddLicense" method="post">
+        <li>
+          @machine.MachineName 
+          <button class="btn btn-dark btn-sm add-license-button">Add License</button>
+        </li>
+          <input type="hidden" name="EngineerId" value="@Model.EngineerId" />
+          <input type="hidden" name="MachineId" value="@machine.MachineId" />
+      </form>
     }
-    
-    // if not licensed, show an empty indicator and an add button
-    // if licensed, show an indicator and a remove button
-    // buttons must post and refresh this partial view
   }
 </ul>
+
+<script>
+  $(".remove-license-button").on("click", function(event) {
+    event.preventDefault();
+    let engineerId = $(this).closest("input[name='EngineerId']").val();
+    let machineId = $(this).closest("input[name='MachineId']").val();
+
+    $("#licenses-div").load("/Engineers/RemoveLicense", {EngineerId: engineerId, MachineId: machineId})
+  });
+
+  $(".add-license-button").on("click", function(event) {
+    event.preventDefault();
+    let engineerId = $(this).closest("input[name='EngineerId']").val();
+    let machineId = $(this).closest("input[name='MachineId']").val();
+    alert(engineerId)
+
+    $("#licenses-div").load("/Engineers/AddLicense", {EngineerId: engineerId, MachineId: machineId})
+  });
+</script>

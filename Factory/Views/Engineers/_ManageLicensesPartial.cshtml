@@ -1,0 +1,22 @@
+@using Factory.Models;
+
+@model Factory.Models.Engineer
+
+<h5>@Model.FullName's Licenses:</h5>
+<ul id="license-list">
+  @foreach (Machine machine in ViewData["Machines"] as List<Machine>)
+  {
+    if (Model.Licenses.Where(license => license.MachineId == machine.MachineId).Count() > 0)
+    {
+      <li class="license-check">@machine.MachineName</li>
+    }
+    else
+    {
+      <li>@machine.MachineName</li>
+    }
+    
+    // if not licensed, show an empty indicator and an add button
+    // if licensed, show an indicator and a remove button
+    // buttons must post and refresh this partial view
+  }
+</ul>

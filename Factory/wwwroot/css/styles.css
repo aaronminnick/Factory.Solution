@@ -6,3 +6,7 @@
   border: 2px solid black;
   padding: .2em;
 }
+
+.license-check:before {
+  content: '✓';
+}

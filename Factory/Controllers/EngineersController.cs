@@ -30,7 +30,10 @@ namespace Factory.Controllers
 
     public ActionResult Details(int id)
     {
-      Engineer model = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      Engineer model = _db.Engineers
+        .Include(engineer => engineer.Licenses)
+        .FirstOrDefault(engineer => engineer.EngineerId == id);
+      ViewData["Machines"] = _db.Machines.ToList();
       return View(model);
     }
 

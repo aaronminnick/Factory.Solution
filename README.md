@@ -2,12 +2,10 @@
 #### _by Aaron Minnick_
 
 ### Technologies Used:
-* C#
-* ASP .NET Core
+* C# / ASP .NET Core
 * Razor / HTML / CSS
 * JS / jQuery
-* Entity Framework / LINQ
-* MySql Workbench
+* Entity Framework / LINQ / MySql
 
 This is the week 4 independent project for the C# curriculum at [Epicodus](https://www.epicodus.com). The objective was to create an database application demonstrating a many-to-many relationship. The program should let a factory manager add engineers and machines, and track who is licensed to repair each machine.
 

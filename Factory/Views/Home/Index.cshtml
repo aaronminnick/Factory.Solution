@@ -22,7 +22,7 @@
         {
           licenses += license.MachineId.ToString();
         }
-        <li id="@("E"+engineer.EngineerId)" data-licenses=@licenses>@Html.ActionLink(@engineer.FullName, "Details", "Engineers", new {id = engineer.EngineerId})</li>
+        <li class="bordered" id="@("E"+engineer.EngineerId)" data-licenses=@licenses>@Html.ActionLink(@engineer.FullName, "Details", "Engineers", new {id = engineer.EngineerId})</li>
       }
       </ul>
     }
@@ -30,7 +30,7 @@
     {
       <p>No engineers in database. Please use the link to add an engineer.</p>
     }
-    @Html.ActionLink("Add an engineer", "Create", "Engineers")
+    <button type="button" class="btn btn-dark">@Html.ActionLink("Add an engineer", "Create", "Engineers")</button>
   </div>
   <div class ="col-6">
     <h3>Machines</h3>
@@ -44,7 +44,7 @@
         {
           licenses += license.EngineerId.ToString();
         }
-        <li id="@("M"+machine.MachineId)" data-licenses=@licenses>@Html.ActionLink(@machine.MachineName, "Details", "Machines", new {id = machine.MachineId})</li>
+        <li class="bordered" id="@("M"+machine.MachineId)" data-licenses=@licenses>@Html.ActionLink(@machine.MachineName, "Details", "Machines", new {id = machine.MachineId})</li>
       }
       </ul>
     }
@@ -52,7 +52,7 @@
     {
       <p>No machines in database. Please use the link to add an machine.</p>
     }
-    @Html.ActionLink("Add a machine", "Create", "Machines")
+    <button type="button" class="btn btn-dark">@Html.ActionLink("Add a machine", "Create", "Machines")</button>
   </div>
 </div>
 

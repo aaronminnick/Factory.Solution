@@ -1,3 +1,21 @@
+body {
+  background-color: darkslategray;
+}
+
+.container {
+  background-color: lightgray;
+  padding: 3em;
+}
+
+li a {
+  color: black;
+  font-weight: bold;
+}
+
+button a {
+  color: white;
+}
+
 .initially-hidden {
   display: none;
 }

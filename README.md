@@ -7,7 +7,7 @@
 * JS / jQuery
 * Entity Framework / LINQ / MySql
 
-This is the week 4 independent project for the C# curriculum at [Epicodus](https://www.epicodus.com). The objective was to create an database application demonstrating a many-to-many relationship. The program should let a factory manager add engineers and machines, and track who is licensed to repair each machine.
+This is the week 4 independent project for the C# curriculum at [Epicodus](https://www.epicodus.com). The objective was to create an database application demonstrating a many-to-many relationship. The program should let a factory manager add engineers and machines, and track which engineers are licensed to repair each machine.
 
 Beyond baseline requirements, I explored partial views in cobmination with jQuery to perform editing, join table linking, and deleting of records via the details page for a more compact layout with less navigating between pages.
 
@@ -57,7 +57,7 @@ In order for Entity Framework to construct your database correctly, you will nee
 Be sure to replace the password value with your actual password. Depending on how you have configured your MySql server, you may need to make additional edits to properties in this file.
 
 ### Known Bugs/Issues:
-* None
+* Leaving name blank when creating objects will cause the homepage not to load (need to add validation to form fields to prevent.)
 
 _Thanks for reading! Please feel free to contact me with feedback!_
 ***

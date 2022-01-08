@@ -3,9 +3,11 @@
 }
 
 @using Factory.Models;
+
 <div class="jumbotron">
   <h2>Welcome to the Factory Management Database</h2>
   <p>Use the links below to view details of engineers or machines.</p>
+  <p>Hovering over a link displays the matched repair licenses for that record.</p>
 </div>
 <div class="row">
   <div class="col-6">
@@ -15,7 +17,12 @@
       <ul>
       @foreach (Engineer engineer in ViewBag.Engineers)
       {
-        <li>@Html.ActionLink(@engineer.FullName, "Details", "Engineers", new {id = engineer.EngineerId})</li>
+        string licenses = "";
+        foreach (EngineerMachine license in engineer.Licenses)
+        {
+          licenses += license.MachineId.ToString();
+        }
+        <li id="@("E"+engineer.EngineerId)" data-licenses=@licenses>@Html.ActionLink(@engineer.FullName, "Details", "Engineers", new {id = engineer.EngineerId})</li>
       }
       </ul>
     }
@@ -32,7 +39,12 @@
       <ul>
       @foreach (Machine machine in ViewBag.Machines)
       {
-        <li>@Html.ActionLink(@machine.MachineName, "Details", "Machines", new {id = machine.MachineId})</li>
+        string licenses = "";
+        foreach (EngineerMachine license in machine.Licenses)
+        {
+          licenses += license.EngineerId.ToString();
+        }
+        <li id="@("M"+machine.MachineId)" data-licenses=@licenses>@Html.ActionLink(@machine.MachineName, "Details", "Machines", new {id = machine.MachineId})</li>
       }
       </ul>
     }
@@ -43,3 +55,5 @@
     @Html.ActionLink("Add a machine", "Create", "Machines")
   </div>
 </div>
+
+<script src="~/js/index.js"></script>

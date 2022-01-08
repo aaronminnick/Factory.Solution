@@ -9,8 +9,13 @@
 
 li {
   list-style-type: none;
+  margin: .2em;
 }
 
 .license-check:before {
   content: '✓';
+}
+
+.matched {
+  background-color: lightgreen;
 }
